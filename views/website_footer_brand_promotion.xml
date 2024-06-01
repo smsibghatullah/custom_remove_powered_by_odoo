@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="web.brand_promotion_message" name="Brand Promotion Message">
+        <t t-set="final_message">Powered by Integrated Solutions</t>
+        <t t-out="final_message"/>
+    </template>
+    <template id="web.brand_promotion" name="Brand Promotion">
+        <div class="o_brand_promotion">
+            <t t-call="web.brand_promotion_message">
+                <t t-set="_message"></t>
+                <t t-set="_utm_medium" t-valuef="portal"/>
+            </t>
+        </div>
+    </template>
+
+    
+</odoo>
