@@ -27,3 +27,12 @@ class MailTemplate(models.Model):
                 }
             }
         }
+
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
+
+    # Override the existing field to set precision to 3 decimal places
+    price_unit = fields.Float(
+        string='Unit Price',
+        digits=(16, 3),
+    )
