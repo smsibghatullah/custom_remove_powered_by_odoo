@@ -31,8 +31,32 @@ class MailTemplate(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
-    # Override the existing field to set precision to 3 decimal places
-    price_unit = fields.Float(
-        string='Unit Price',
+    amount_untaxed = fields.Monetary(
+        string='Untaxed Amount',
+        currency_field='currency_id',
+        digits=(16, 3),
+    )
+    
+    amount_tax = fields.Monetary(
+        string='Tax',
+        currency_field='currency_id',
+        digits=(16, 3),
+    )
+    
+    amount_total = fields.Monetary(
+        string='Total',
+        currency_field='currency_id',
+        digits=(16, 3),
+    )
+    
+    amount_residual = fields.Monetary(
+        string='Amount Due',
+        currency_field='currency_id',
+        digits=(16, 3),
+    )
+    
+    amount_paid = fields.Monetary(
+        string='Paid Amount',
+        currency_field='currency_id',
         digits=(16, 3),
     )
