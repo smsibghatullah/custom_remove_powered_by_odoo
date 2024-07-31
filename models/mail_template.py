@@ -31,6 +31,20 @@ class MailTemplate(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
+    price_unit = fields.Float(
+        string='Unit Price',
+        digits=(16, 3),
+    )
+
+    price_subtotal = fields.Monetary(
+        string='Subtotal',
+        currency_field='currency_id',
+        digits=(16, 3),
+    )
+
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
     amount_untaxed = fields.Monetary(
         string='Untaxed Amount',
         currency_field='currency_id',
