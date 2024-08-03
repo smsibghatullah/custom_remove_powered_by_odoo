@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, _
+from odoo import fields, models, _,api
 from bs4 import BeautifulSoup
 
 
@@ -36,41 +36,9 @@ class AccountMoveLine(models.Model):
         digits=(16, 3),
     )
 
-    price_subtotal = fields.Monetary(
+    price_subtotal = fields.Float(
         string='Subtotal',
-        currency_field='currency_id',
         digits=(16, 3),
     )
 
-class AccountMove(models.Model):
-    _inherit = 'account.move'
 
-    amount_untaxed = fields.Monetary(
-        string='Untaxed Amount',
-        currency_field='currency_id',
-        digits=(16, 3),
-    )
-    
-    amount_tax = fields.Monetary(
-        string='Tax',
-        currency_field='currency_id',
-        digits=(16, 3),
-    )
-    
-    amount_total = fields.Monetary(
-        string='Total',
-        currency_field='currency_id',
-        digits=(16, 3),
-    )
-    
-    amount_residual = fields.Monetary(
-        string='Amount Due',
-        currency_field='currency_id',
-        digits=(16, 3),
-    )
-    
-    amount_paid = fields.Monetary(
-        string='Paid Amount',
-        currency_field='currency_id',
-        digits=(16, 3),
-    )
